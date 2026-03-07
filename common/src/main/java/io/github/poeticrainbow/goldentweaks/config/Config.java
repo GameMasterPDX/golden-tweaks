@@ -25,6 +25,7 @@ public class Config {
 
         try (Writer writer = new FileWriter(CONFIG_PATH.toFile())) {
             GSON.toJson(obj, writer);
+            GoldenTweaks.LOGGER.info("Successfully saved config to {}", CONFIG_PATH);
         } catch (IOException e) {
             GoldenTweaks.LOGGER.error("Could not save config file to path {}", CONFIG_PATH);
         }
@@ -48,6 +49,8 @@ public class Config {
                         GoldenTweaks.LOGGER.error("Failed to create tweak for tweak config {}", key);
                     }
                 }
+
+                GoldenTweaks.LOGGER.info("Successfully loaded config from {}", CONFIG_PATH);
             }
         } catch (IOException e) {
             GoldenTweaks.LOGGER.error("Could not read config file from path {}", CONFIG_PATH);

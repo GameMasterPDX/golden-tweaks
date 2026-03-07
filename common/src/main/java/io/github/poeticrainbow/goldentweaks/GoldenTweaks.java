@@ -5,7 +5,6 @@ import io.github.poeticrainbow.goldentweaks.config.Config;
 import io.github.poeticrainbow.goldentweaks.config.screen.ConfigScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

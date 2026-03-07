@@ -1,8 +1,10 @@
 package io.github.poeticrainbow.goldentweaks.config.screen;
 
+import io.github.poeticrainbow.goldentweaks.config.Config;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.StringWidget;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,11 +28,20 @@ public class ConfigScreen extends Screen {
         //layout.arrangeElements();
 
         addRenderableWidget(list);
-        addRenderableWidget(new StringWidget(getTitle(), getFont()));
+        addRenderableWidget(
+            new Button.Builder(CommonComponents.GUI_DONE, button -> this.onClose()).build()
+        );
+    }
+
+    @Override
+    public void onClose() {
+        super.onClose();
+        Config.save();
     }
 
     @Override
     public void render(@NotNull GuiGraphics graphics, int i, int j, float f) {
+        graphics.drawCenteredString(getFont(), getTitle(), width / 2, 0, 0);
         //renderMenuBackground(graphics);
 
         //layout.visitChildren(layoutElement -> layoutElement.visitWidgets(abstractWidget -> abstractWidget.render(graphics, i, j, f)));
