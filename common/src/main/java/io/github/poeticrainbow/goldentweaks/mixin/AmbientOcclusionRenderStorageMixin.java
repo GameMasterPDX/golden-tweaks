@@ -1,6 +1,6 @@
 package io.github.poeticrainbow.goldentweaks.mixin;
 
-import io.github.poeticrainbow.goldentweaks.config.Tweaks;
+import io.github.poeticrainbow.goldentweaks.tweak.Tweaks;
 import net.minecraft.client.renderer.block.ModelBlockRenderer;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;

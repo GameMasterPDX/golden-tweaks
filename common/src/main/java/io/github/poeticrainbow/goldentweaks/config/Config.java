@@ -3,57 +3,54 @@ package io.github.poeticrainbow.goldentweaks.config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonSyntaxException;
 import dev.architectury.platform.Platform;
 import io.github.poeticrainbow.goldentweaks.GoldenTweaks;
+import io.github.poeticrainbow.goldentweaks.tweak.Tweak;
+import io.github.poeticrainbow.goldentweaks.tweak.Tweaks;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import java.io.*;
 import java.nio.file.Path;
-import java.util.Optional;
 
-public record Config(
-    boolean darkAmbientOcclusion,
-    boolean fullFaceShading,
-    boolean betaLeavesLighting
-) {
-    public static final Codec<Config> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-        Codec.BOOL.optionalFieldOf("dark_ambient_occlusion", true).forGetter(Config::darkAmbientOcclusion),
-        Codec.BOOL.optionalFieldOf("full_face_shading", true).forGetter(Config::fullFaceShading),
-        Codec.BOOL.optionalFieldOf("beta_leaves_lighting", true).forGetter(Config::betaLeavesLighting)
-    ).apply(instance, Config::new));
+public class Config {
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
     public static final Path CONFIG_PATH = Platform.getConfigFolder().resolve("goldentweaks.json");
 
-    public void save() {
-        var data = CODEC.encodeStart(JsonOps.INSTANCE, this);
+    public static void save() {
+        JsonObject obj = new JsonObject();
 
-        data.ifSuccess(json -> {
-            try {
-                Files.writeString(CONFIG_PATH, GSON.toJson(json), StandardCharsets.UTF_8);
-            } catch (IOException e) {
-                GoldenTweaks.LOGGER.error("Failed to save config at path {}", CONFIG_PATH);
-            }
-        });
+        for (Tweak<?> value : Tweaks.values()) {
+            obj.add(value.key(), GSON.toJsonTree(value.get()));
+        }
+
+        try (Writer writer = new FileWriter(CONFIG_PATH.toFile())) {
+            GSON.toJson(obj, writer);
+        } catch (IOException e) {
+            GoldenTweaks.LOGGER.error("Could not save config file to path {}", CONFIG_PATH);
+        }
     }
 
-    public static Optional<Config> load() {
+    @SuppressWarnings("unchecked")
+    public static void load() {
         try {
             // todo: change this to load a default config from the resources in the jar
-            var data = "{}";
-            if (CONFIG_PATH.toFile().exists()) {
-                data = Files.readString(CONFIG_PATH);
-            }
-            var json = GSON.fromJson(data, JsonObject.class);
-            var result = CODEC.parse(JsonOps.INSTANCE, json);
+            try (Reader reader = new FileReader(CONFIG_PATH.toFile())) {
+                JsonObject obj = GSON.fromJson(reader, JsonObject.class);
 
-            return result.result();
+                for (String key : obj.keySet()) {
+                    Tweak<?> value = Tweaks.get(key);
+                    if (value == null) continue;
+
+                    try {
+                        Object parsed = GSON.fromJson(obj.get(key), value.defaultValue().getClass());
+                        ((Tweak<Object>) value).set(parsed);
+                    } catch (JsonSyntaxException e) {
+                        GoldenTweaks.LOGGER.error("Failed to create tweak for tweak config {}", key);
+                    }
+                }
+            }
         } catch (IOException e) {
             GoldenTweaks.LOGGER.error("Could not read config file from path {}", CONFIG_PATH);
-            return Optional.empty();
         }
     }
 }

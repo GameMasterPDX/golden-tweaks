@@ -1,7 +1,7 @@
 package io.github.poeticrainbow.goldentweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import io.github.poeticrainbow.goldentweaks.config.Tweaks;
+import io.github.poeticrainbow.goldentweaks.tweak.Tweaks;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
