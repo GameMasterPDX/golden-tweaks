@@ -13,6 +13,7 @@ import static dev.architectury.event.events.client.ClientCommandRegistrationEven
 public final class GoldenTweaks {
     public static final String MOD_ID = "goldentweaks";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static TweakPlatform PLATFORM;
 
     public static void init() {
         // Write common init code here.

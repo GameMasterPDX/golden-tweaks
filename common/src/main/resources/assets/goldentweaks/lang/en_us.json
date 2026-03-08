@@ -1,3 +1,10 @@
 {
-  "gui.goldentweaks.config": "GoldenTweaks Config"
+  "gui.goldentweaks.config": "GoldenTweaks Config",
+  "goldentweaks.error_tooltip": "An error occurred that caused this tweak to fail. Please check your logs for more information.",
+  "goldentweaks.tweak.beta_leaves_lighting": "Beta Leaves Lighting",
+  "goldentweaks.tweak.beta_leaves_lighting.tooltip": "When enabled, Leaves will no longer cast an Ambient Occlusion shadow on adjacent blocks.",
+  "goldentweaks.tweak.dark_ambient_occlusion": "Dark Ambient Occlusion",
+  "goldentweaks.tweak.dark_ambient_occlusion.tooltip": "When enabled, the shadows between adjacent blocks will be darker.",
+  "goldentweaks.tweak.full_face_shading": "Full Face Shading",
+  "goldentweaks.tweak.full_face_shading.tooltip": "When enabled, the lighting on block models will be applied to each individual element independent of their position in the model."
 }

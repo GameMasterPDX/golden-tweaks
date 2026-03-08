@@ -47,6 +47,8 @@ public class Config {
                         ((Tweak<Object>) value).set(parsed);
                     } catch (JsonSyntaxException e) {
                         GoldenTweaks.LOGGER.error("Failed to create tweak for tweak config {}", key);
+                    } catch (ExceptionInInitializerError e) {
+                        GoldenTweaks.LOGGER.error("A severe issue occured while loading tweak {}:\n{}", key, e.getMessage());
                     }
                 }
 

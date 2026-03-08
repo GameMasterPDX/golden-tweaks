@@ -6,8 +6,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ObjectSelectionList;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import org.jetbrains.annotations.NotNull;
 
 public class TweakButtonEntry extends ObjectSelectionList.Entry<@NotNull TweakButtonEntry> {
@@ -17,13 +19,22 @@ public class TweakButtonEntry extends ObjectSelectionList.Entry<@NotNull TweakBu
 
     public TweakButtonEntry(Tweak<?> tweak) {
         this.tweak = tweak;
+        var tooltip = Component.translatable(tweak.tooltip());
+        if (!tweak.isFunctional()) {
+            // if the tweak is not functional, an error occurred. mark it with red
+            tooltip.setStyle(Style.EMPTY.withColor(0xFFFF0000));
+        }
+
         this.child = Button.builder(
-            getMessage(), button -> {
-                if (tweak instanceof BooleanTweak bTweak) bTweak.toggle();
-                updateMessage();
-                Minecraft.getInstance().levelRenderer.allChanged();
-            }
-        ).bounds(0, 0, 220, 20).build();
+                               getMessage(), button -> {
+                                   if (tweak instanceof BooleanTweak bTweak) bTweak.toggle();
+                                   updateMessage();
+                                   Minecraft.getInstance().levelRenderer.allChanged();
+                               }
+                           )
+                           .bounds(0, 0, 220, 20)
+                           .tooltip(Tooltip.create(tooltip)).build();
+        child.active = tweak.isFunctional();
     }
 
     @Override
