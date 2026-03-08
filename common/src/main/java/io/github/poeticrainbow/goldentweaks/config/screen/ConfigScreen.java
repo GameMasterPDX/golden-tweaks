@@ -13,8 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class ConfigScreen extends Screen {
-    //private HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 40, 40);
-    private TweakButtonList list;
     private List<String> errors;
 
     public static final int sidebarWidth = 240;
@@ -26,7 +24,8 @@ public class ConfigScreen extends Screen {
     @Override
     protected void init() {
         var padding = 20;
-        list = new TweakButtonList(minecraft, sidebarWidth, height - padding);
+        //private HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 40, 40);
+        TweakButtonList list = new TweakButtonList(minecraft, sidebarWidth, height - padding);
         errors = ErrorCollector.checkForErrors();
 
         //layout.addTitleHeader(getTitle(), getFont());
