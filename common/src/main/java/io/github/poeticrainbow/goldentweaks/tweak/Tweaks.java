@@ -14,6 +14,7 @@ public class Tweaks {
     public static final Tweak<Boolean> DARK_AMBIENT_OCCLUSION = register(new BooleanTweak("dark_ambient_occlusion", true));
     public static final Tweak<Boolean> FULL_FACE_SHADING = register(new BooleanTweak("full_face_shading", true, GoldenTweaks.PLATFORM::isVanillaAo));
     public static final Tweak<Boolean> BIG_STARS = register(new BooleanTweak("big_stars", true));
+    public static final Tweak<Boolean> FLAT_ITEMS = register(new BooleanTweak("flat_items", true));
 
 
     public static <V> Tweak<V> register(Tweak<V> tweak) {
