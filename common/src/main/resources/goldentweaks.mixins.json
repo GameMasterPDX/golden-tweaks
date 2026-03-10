@@ -9,7 +9,8 @@
     "SkyRendererMixin"
   ],
   "mixins": [
-    "BlockBehaviorMixin"
+    "BlockBehaviorMixin",
+    "BlockStateBaseMixin"
   ],
   "injectors": {
     "defaultRequire": 1

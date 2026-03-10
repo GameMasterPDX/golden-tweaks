@@ -10,5 +10,7 @@
   "goldentweaks.tweak.big_stars": "Big Stars",
   "goldentweaks.tweak.big_stars.tooltip": "When enabled, the stars will be ~2x bigger like in Beta.\n\nThis tweak requires a restart to take effect.",
   "goldentweaks.tweak.flat_items": "Flat Items",
-  "goldentweaks.tweak.flat_items.tooltip": "When enabled, dropped items will be rendered 2D and flat."
+  "goldentweaks.tweak.flat_items.tooltip": "When enabled, dropped items will be rendered 2D and flat.",
+  "goldentweaks.tweak.dark_water_lighting": "Dark Water Lighting",
+  "goldentweaks.tweak.dark_water_lighting.tooltip": "When enabled, Water will block 3 light levels per layer instead of 1."
 }
