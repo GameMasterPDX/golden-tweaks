@@ -11,7 +11,7 @@ authors = "PoeticRainbow"
 description = '''
 Implements visual tweaks to send your Minecraft back in time!
 '''
-#logoFile = ""
+logoFile = "assets/goldentweaks/icon.png"
 
 [[dependencies.goldentweaks]]
 modId = "neoforge"
