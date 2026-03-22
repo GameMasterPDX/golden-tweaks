@@ -2,6 +2,7 @@ package io.github.poeticrainbow.goldentweaks.mixin.tweak.beta_main_menu;
 
 import io.github.poeticrainbow.goldentweaks.mixin.required.ScreenAccessor;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
