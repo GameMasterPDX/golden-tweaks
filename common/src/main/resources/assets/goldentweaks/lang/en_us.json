@@ -20,6 +20,11 @@
   "goldentweaks.tweak.beta_mojang_logo": "Beta Mojang Logo",
   "goldentweaks.tweak.beta_mojang_logo.tooltip": "When enabled, the loading screen will appear as the one in beta versions.",
 
+  "goldentweaks.fullblock_chests": "Full Block Chests",
+  "gamerule.goldentweaks.fullblock_chests": "Makes chests take up a full block",
+  "goldentweaks.fullblock_fences": "Full Block Fences",
+  "gamerule.goldentweaks.fullblock_fences": "Makes fences take a full block",
+
   "goldentweaks.menu.mods": "Mods and Texture Packs",
   "goldentweaks.menu.version": "Minecraft Beta 1.7.3"
 }

@@ -1,7 +1,9 @@
 package io.github.poeticrainbow.goldentweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import io.github.poeticrainbow.goldentweaks.GoldenTweaks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.EnderChestBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,12 +17,12 @@ import org.spongepowered.asm.mixin.injection.At;
 public class EnderChestBlockMixin {
     @ModifyReturnValue(method = "getShape", at = @At("RETURN"))
     public VoxelShape goldentweaks$getShape(VoxelShape original, BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
-
-        if (mc == null || mc.getSingleplayerServer() == null) {
-            return original;
+        if (world instanceof  ServerLevel serverLevel) {
+            if (serverLevel.getGameRules().get(GoldenTweaks.FULLBLOCK_CHESTS.get())) {
+                return Shapes.block();
+            }
         }
 
-        return Shapes.block();
+        return original;
     }
 }
