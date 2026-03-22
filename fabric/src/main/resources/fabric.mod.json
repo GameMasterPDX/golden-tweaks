@@ -24,6 +24,7 @@
   },
   "mixins": [
     "goldentweaks.mixins.json",
+    "goldentweaks-tweak.mixins.json",
     "goldentweaks-fabric.mixins.json"
   ],
   "depends": {

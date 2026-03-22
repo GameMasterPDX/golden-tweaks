@@ -1,0 +1,25 @@
+{
+  "required": false,
+  "package": "io.github.poeticrainbow.goldentweaks.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "tweak.beta_main_menu.TitleScreenMixin",
+    "tweak.beta_mojang_logo.LoadingOverlayMixin",
+    "tweak.big_stars.SkyRendererMixin",
+    "tweak.flat_items.ItemEntityRendererMixin",
+    "tweak.full_face_shading.AmbientOcclusionRenderStorageMixin"
+  ],
+  "mixins": [
+    "tweak.beta_leaves_lighting.BlockBehaviorMixin",
+    "tweak.dark_ambient_occlusion.BlockBehaviorMixin",
+    "tweak.dark_water_lighting.BlockStateBaseMixin",
+    "tweak.old_block_shapes.ChestBlockMixin",
+    "tweak.old_block_shapes.EnderChestBlockMixin",
+    "tweak.old_block_shapes.FenceBlockMixin",
+    "tweak.old_footsteps.EntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

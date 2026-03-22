@@ -38,4 +38,7 @@ side = "BOTH"
 config = "goldentweaks.mixins.json"
 
 [[mixins]]
+config = "goldentweaks-tweak.mixins.json"
+
+[[mixins]]
 config = "goldentweaks-neoforge.mixins.json"
