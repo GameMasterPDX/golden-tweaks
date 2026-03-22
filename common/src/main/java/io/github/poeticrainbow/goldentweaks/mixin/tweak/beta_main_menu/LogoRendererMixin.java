@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 
 import static io.github.poeticrainbow.goldentweaks.GoldenTweaks.MOD_ID;
 
