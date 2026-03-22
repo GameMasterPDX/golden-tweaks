@@ -5,6 +5,7 @@
   "minVersion": "0.8",
   "client": [
     "beta_main_menu.TitleScreenMixin",
+    "beta_main_menu.LogoRendererMixin",
     "beta_mojang_logo.LoadingOverlayMixin",
     "big_stars.SkyRendererMixin",
     "flat_items.ItemEntityRendererMixin",
