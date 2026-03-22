@@ -11,7 +11,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(FenceBlock.class)
-public class FenceBlockMixin extends Block {
+public abstract class FenceBlockMixin extends Block {
 
     public FenceBlockMixin(Properties properties) {
         super(properties);

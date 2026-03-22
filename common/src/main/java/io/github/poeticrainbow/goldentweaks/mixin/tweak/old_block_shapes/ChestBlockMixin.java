@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ChestBlock.class)
-public class ChestBlockMixin {
+public abstract class ChestBlockMixin{
     @ModifyReturnValue(method = "getShape", at = @At("RETURN"))
     public VoxelShape goldentweaks$getShape(VoxelShape original, BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return OldBlockShapesHelper.getFullBlockShape().orElse(original);

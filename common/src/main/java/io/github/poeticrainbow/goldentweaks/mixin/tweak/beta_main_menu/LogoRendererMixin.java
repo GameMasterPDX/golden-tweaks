@@ -13,9 +13,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import static io.github.poeticrainbow.goldentweaks.GoldenTweaks.MOD_ID;
 
 @Mixin(LogoRenderer.class)
-public class LogoRendererMixin {
+public abstract class LogoRendererMixin {
     private static final Identifier BETA_MINECRAFT_LOGO = Identifier.fromNamespaceAndPath(MOD_ID, "textures/gui/mclogo.png");
-
 
     @WrapMethod(method = "renderLogo")
     public void goldentweaks$renderLogo(GuiGraphics guiGraphics, int i, float f, Operation<Void> original) {
