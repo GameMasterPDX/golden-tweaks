@@ -3,9 +3,9 @@ package io.github.poeticrainbow.goldentweaks.mixin.tweak.dark_water_lighting;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.poeticrainbow.goldentweaks.tweak.Tweaks;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
