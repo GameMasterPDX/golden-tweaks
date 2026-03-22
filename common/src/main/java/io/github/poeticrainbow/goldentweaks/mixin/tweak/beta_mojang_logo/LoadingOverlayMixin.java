@@ -22,7 +22,7 @@ public abstract class LoadingOverlayMixin {
     @Shadow private boolean fadeIn;
 
     @Unique
-    private static final Identifier BETA_MOJANG_LOGO = Identifier.fromNamespaceAndPath(MOD_ID, "textures/gui/logo.png");
+    private static final Identifier BETA_MOJANG_LOGO = Identifier.fromNamespaceAndPath(MOD_ID, "textures/gui/mojang.png");
 
     /**
      * @author GMPDX
