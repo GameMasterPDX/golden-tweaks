@@ -1,9 +1,7 @@
 package io.github.poeticrainbow.goldentweaks.tweak;
 
 import io.github.poeticrainbow.goldentweaks.GoldenTweaks;
-import io.github.poeticrainbow.goldentweaks.enums.Versions;
 import io.github.poeticrainbow.goldentweaks.tweak.types.BooleanTweak;
-import io.github.poeticrainbow.goldentweaks.tweak.types.EnumTweak;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
