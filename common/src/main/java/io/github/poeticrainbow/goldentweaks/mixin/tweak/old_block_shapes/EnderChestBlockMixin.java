@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(EnderChestBlock.class)
 public abstract class EnderChestBlockMixin{
     @ModifyReturnValue(method = "getShape", at = @At("RETURN"))
-    public VoxelShape goldentweaks$getShape(VoxelShape original, BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public VoxelShape goldentweaks$get_shape(VoxelShape original, BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return OldBlockShapesHelper.getFullBlockShape().orElse(original);
     }
 }

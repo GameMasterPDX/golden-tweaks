@@ -19,7 +19,7 @@ public class TitleScreenMixinFabric {
                     ordinal = 0
             )
     )
-    public void redirectVersionText(GuiGraphics instance, Font font, String text, int x, int y, int color) {
+    public void goldentweaks$change_version_text(GuiGraphics instance, Font font, String text, int x, int y, int color) {
         if (Tweaks.BETA_MAIN_MENU.get()) {
             String version = Component.translatable("goldentweaks.menu.version").getString();
             if (Tweaks.DIRT_GUI_BACKGROUND.get()) {

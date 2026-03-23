@@ -35,7 +35,7 @@ public abstract class TitleScreenMixin extends Screen {
     }
 
     @Inject(method = "init", at = @At("TAIL"))
-    private void goldentweaks$adjustButtonPositions(CallbackInfo ci) {
+    private void goldentweaks$adjust_button_positions(CallbackInfo ci) {
         if (Tweaks.BETA_MAIN_MENU.get()) {
             int startY = this.height / 4 + 48;
             int spacing = 24;
