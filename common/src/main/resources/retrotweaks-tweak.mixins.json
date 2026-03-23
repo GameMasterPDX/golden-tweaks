@@ -11,10 +11,10 @@
     "flat_items.ItemEntityRendererMixin",
     "full_face_shading.AmbientOcclusionRenderStorageMixin",
     "mojang_logo.LoadingOverlayMixin",
-    "old_panorama_blur.PanoramaRendererMixin",
-    "old_button_colors.AbstractWidgetMixin",
     "old_button_colors.AbstractButtonMixin",
-    "old_button_colors.AbstractSliderButtonMixin"
+    "old_button_colors.AbstractSliderButtonMixin",
+    "old_button_colors.AbstractWidgetMixin",
+    "old_panorama_blur.PanoramaRendererMixin"
   ],
   "mixins": [
     "beta_leaves_lighting.BlockBehaviorMixin",
@@ -24,6 +24,7 @@
     "old_block_shapes.EnderChestBlockMixin",
     "old_block_shapes.FenceBlockMixin",
     "old_fence_connections.FenceBlockMixin",
+    "old_block_shapes.FenceGateBlockMixin",
     "old_footsteps.EntityMixin"
   ],
   "injectors": {

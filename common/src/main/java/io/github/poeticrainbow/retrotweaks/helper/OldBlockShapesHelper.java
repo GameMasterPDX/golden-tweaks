@@ -35,4 +35,11 @@ public class OldBlockShapesHelper {
         }
         return Optional.empty();
     }
+
+    public static Optional<VoxelShape> getEmptyShape() {
+        if (shouldOverrideBlockShapes()) {
+            return Optional.of(Shapes.empty());
+        }
+        return Optional.empty();
+    }
 }
