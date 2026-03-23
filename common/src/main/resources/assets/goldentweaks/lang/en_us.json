@@ -26,5 +26,9 @@
   "goldentweaks.tweak.old_panorama_blur": "Old Panorama Blur",
   "goldentweaks.tweak.old_panorama_blur.tooltip": "When enabled, the panorama will be rendered blurry",
   "goldentweaks.menu.mods": "Mods and Texture Packs",
-  "goldentweaks.menu.version": "Minecraft Beta 1.7.3"
+  "goldentweaks.menu.version": "Minecraft Beta 1.7.3",
+  "goldentweaks.enum.versions.alpha": "Alpha",
+  "goldentweaks.enum.versions.beta": "Beta",
+  "goldentweaks.enum.versions.release": "Release",
+  "goldentweaks.enum.versions.modern": "Modern"
 }

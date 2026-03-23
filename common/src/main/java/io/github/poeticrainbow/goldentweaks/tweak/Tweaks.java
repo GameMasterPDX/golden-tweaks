@@ -1,7 +1,9 @@
 package io.github.poeticrainbow.goldentweaks.tweak;
 
 import io.github.poeticrainbow.goldentweaks.GoldenTweaks;
+import io.github.poeticrainbow.goldentweaks.enums.Versions;
 import io.github.poeticrainbow.goldentweaks.tweak.types.BooleanTweak;
+import io.github.poeticrainbow.goldentweaks.tweak.types.EnumTweak;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -32,6 +34,12 @@ public class Tweaks {
     // todo: eventually split tweaks into tweaks for clientside, and gamerules/similar for common
     public static final Tweak<Boolean> OLD_BLOCK_SHAPES = register(new BooleanTweak("old_block_shapes", true));
 
+    //public static final Tweak<Enum<Versions>> TEST = registerEnum(new EnumTweak<>("test", Versions.BETA));
+
+    private static <V extends Enum<V>> Tweak<Enum<V>> registerEnum(Tweak<Enum<V>> tweak) {
+        REGISTRY.put(tweak.key(), tweak);
+        return tweak;
+    }
 
     public static <V> Tweak<V> register(Tweak<V> tweak) {
         REGISTRY.put(tweak.key(), tweak);

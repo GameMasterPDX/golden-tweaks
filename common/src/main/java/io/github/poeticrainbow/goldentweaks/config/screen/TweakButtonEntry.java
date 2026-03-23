@@ -2,6 +2,7 @@ package io.github.poeticrainbow.goldentweaks.config.screen;
 
 import io.github.poeticrainbow.goldentweaks.tweak.Tweak;
 import io.github.poeticrainbow.goldentweaks.tweak.types.BooleanTweak;
+import io.github.poeticrainbow.goldentweaks.tweak.types.EnumTweak;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -27,7 +28,8 @@ public class TweakButtonEntry extends ObjectSelectionList.Entry<@NotNull TweakBu
 
         this.child = Button.builder(
                                getMessage(), button -> {
-                                   if (tweak instanceof BooleanTweak bTweak) bTweak.toggle();
+                                   if (tweak instanceof BooleanTweak booleanTweak) booleanTweak.toggle();
+                                   if (tweak instanceof EnumTweak<?> enumTweak) enumTweak.next();
                                    updateMessage();
                                    Minecraft.getInstance().levelRenderer.allChanged();
                                }
@@ -43,9 +45,21 @@ public class TweakButtonEntry extends ObjectSelectionList.Entry<@NotNull TweakBu
     }
 
     public Component getMessage() {
+        var value = tweak.get();
+        Component message;
+        if (value instanceof Enum) {
+            // key is goldentweaks.enum.class_name.value_name
+            var className = ((Enum<?>) value).getDeclaringClass().getSimpleName().toLowerCase();
+            var valueName = value.toString().toLowerCase();
+            message = Component.translatable("goldentweaks.enum." + className + "." + valueName);
+        } else {
+            message = Component.literal(value.toString());
+        }
+
         return Component.literal("")
                         .append(getNarration())
-                        .append(": " + tweak.get());
+                        .append(": ")
+                        .append(message);
     }
 
     public void updateMessage() {
