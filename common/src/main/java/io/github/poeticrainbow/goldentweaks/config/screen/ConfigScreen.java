@@ -61,8 +61,11 @@ public class ConfigScreen extends Screen {
 
     @Override
     public void renderBackground(@NotNull GuiGraphics guiGraphics, int i, int j, float f) {
-
-        this.minecraft.gui.renderDeferredSubtitles();
+        if (minecraft.level == null) {
+            super.renderBackground(guiGraphics, i, j, f);
+        } else {
+            this.minecraft.gui.renderDeferredSubtitles();
+        }
     }
 
     public void renderErrors(@NotNull GuiGraphics graphics, int i, int j, float f) {
