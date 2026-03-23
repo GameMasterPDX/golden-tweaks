@@ -12,7 +12,7 @@ import org.lwjgl.glfw.GLFW;
 import static dev.architectury.event.events.client.ClientCommandRegistrationEvent.literal;
 
 public class RetroTweaksClient {
-    public static KeyMapping RETRO_TWEAKS_BUTTON = new KeyMapping("key.retrotweaks", GLFW.GLFW_KEY_O, KeyMapping.Category.MISC);
+    public static final KeyMapping RETRO_TWEAKS_BUTTON = new KeyMapping("key.retrotweaks", GLFW.GLFW_KEY_O, KeyMapping.Category.MISC);
 
     public static void init() {
         KeyMappingRegistry.register(RETRO_TWEAKS_BUTTON);
