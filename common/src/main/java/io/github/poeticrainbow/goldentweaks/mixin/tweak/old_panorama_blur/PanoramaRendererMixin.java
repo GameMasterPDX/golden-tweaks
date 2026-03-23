@@ -8,12 +8,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.PanoramaRenderer;
 import net.minecraft.resources.Identifier;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(PanoramaRenderer.class)
 public class PanoramaRendererMixin {
+    @Final
     @Shadow
     private Minecraft minecraft;
 
@@ -25,6 +27,10 @@ public class PanoramaRendererMixin {
     private void goldentweaks$replace_panorama_overlay(GuiGraphics instance, RenderPipeline renderPipeline, Identifier arg, int i, int j, float f, float g, int k, int l, int m, int n, int o, int p, Operation<Void> original) {
         if (Tweaks.OLD_PANORAMA_BLUR.get()) {
             if (minecraft != null && minecraft.screen != null) {
+                // we cannot use GuiGraphics.blurBeforeThisStratum() as it can only happen once per frame
+
+                // for accuracy, we will most likely have to implement a custom cubemap renderer that
+                // renders to a256x256 target and then renders that smoothly over the screen
                 instance.fillGradient(0, 0, minecraft.screen.width, minecraft.screen.height, 0x80FFFFFF, 0x00FFFFFF);
                 instance.fillGradient(0, 0, minecraft.screen.width, minecraft.screen.height, 0, 0x80000000);
             }
