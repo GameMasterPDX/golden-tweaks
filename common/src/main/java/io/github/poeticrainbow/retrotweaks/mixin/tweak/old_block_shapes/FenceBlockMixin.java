@@ -8,24 +8,24 @@ import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(FenceBlock.class)
 public abstract class FenceBlockMixin extends Block {
-
     public FenceBlockMixin(Properties properties) {
         super(properties);
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter world, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return OldBlockShapesHelper.getFullBlockShape()
-                                   .orElseGet(() -> super.getShape(state, world, pos, context));
+                                   .orElse(super.getShape(state, world, pos, context));
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter world, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return OldBlockShapesHelper.getFenceShape()
-                                   .orElseGet(() -> super.getCollisionShape(state, world, pos, context));
+                                   .orElse(super.getCollisionShape(state, world, pos, context));
     }
 }

@@ -31,8 +31,7 @@ public abstract class ScreenMixin {
 
     @WrapMethod(method = "renderMenuBackground(Lnet/minecraft/client/gui/GuiGraphics;IIII)V")
     private void retrotweaks$remove_menu_background(GuiGraphics guiGraphics, int i, int j, int k, int l, Operation<Void> original) {
-        if (Tweaks.DIRT_GUI_BACKGROUND.get()) {
-        } else {
+        if (!Tweaks.DIRT_GUI_BACKGROUND.get()) {
             original.call(guiGraphics, i, j, k, l);
         }
     }
