@@ -12,6 +12,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.CrossCollisionBlock;
 import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -23,16 +24,24 @@ public abstract class FenceBlockMixin extends CrossCollisionBlock {
     }
 
     @Unique
-    private boolean retrotweaks$should_connect(BlockState state) {
-        return state.is(BlockTags.FENCES) || state.is(BlockTags.FENCE_GATES);
+    private boolean retrotweaks$should_connect(BlockState state, Direction direction) {
+        if (state.is(BlockTags.FENCE_GATES) && state.hasProperty(HorizontalDirectionalBlock.FACING)) {
+            var facing = state.getValue(HorizontalDirectionalBlock.FACING);
+            return switch (facing) {
+                case NORTH, SOUTH -> direction.getAxis().equals(Direction.Axis.X);
+                case EAST, WEST -> direction.getAxis().equals(Direction.Axis.Z);
+                default -> false;
+            };
+        }
+        return state.is(BlockTags.FENCES);
     }
 
     @Unique
     private BlockState retrotweaks$connect_fence_state(BlockState state, BlockState north, BlockState east, BlockState south, BlockState west) {
-        return state.setValue(NORTH, retrotweaks$should_connect(north))
-                    .setValue(EAST, retrotweaks$should_connect(east))
-                    .setValue(SOUTH, retrotweaks$should_connect(south))
-                    .setValue(WEST, retrotweaks$should_connect(west));
+        return state.setValue(NORTH, retrotweaks$should_connect(north, Direction.NORTH))
+                    .setValue(EAST, retrotweaks$should_connect(east, Direction.EAST))
+                    .setValue(SOUTH, retrotweaks$should_connect(south, Direction.SOUTH))
+                    .setValue(WEST, retrotweaks$should_connect(west, Direction.WEST));
     }
 
     @WrapMethod(method = "getStateForPlacement")
