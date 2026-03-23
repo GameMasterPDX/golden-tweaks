@@ -37,6 +37,6 @@ public class GoldenTweaksClient {
     }
 
     public static void openConfigScreen() {
-        Minecraft.getInstance().execute(() -> Minecraft.getInstance().setScreen(new ConfigScreen()));
+        Minecraft.getInstance().execute(() -> Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen)));
     }
 }

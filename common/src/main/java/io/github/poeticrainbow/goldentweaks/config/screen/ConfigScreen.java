@@ -17,8 +17,15 @@ public class ConfigScreen extends Screen {
 
     public static final int sidebarWidth = 240;
 
+    private Screen parent;
+
     public ConfigScreen() {
         super(Component.translatable("gui.goldentweaks.config"));
+    }
+
+    public ConfigScreen(Screen parent) {
+        super(Component.translatable("gui.goldentweaks.config"));
+        this.parent = parent;
     }
 
     @Override
@@ -44,8 +51,12 @@ public class ConfigScreen extends Screen {
 
     @Override
     public void onClose() {
-        super.onClose();
         Config.save();
+        if (parent != null) {
+            minecraft.setScreen(parent);
+        } else {
+            super.onClose();
+        }
     }
 
     @Override
