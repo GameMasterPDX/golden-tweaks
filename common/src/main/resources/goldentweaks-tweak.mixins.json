@@ -6,12 +6,12 @@
   "client": [
     "beta_main_menu.LogoRendererMixin",
     "beta_main_menu.TitleScreenMixin",
-    "mojang_logo.LoadingOverlayMixin",
     "big_stars.SkyRendererMixin",
+    "dirt_gui_background.ScreenMixin",
     "flat_items.ItemEntityRendererMixin",
     "full_face_shading.AmbientOcclusionRenderStorageMixin",
-    "old_panorama_blur.PanoramaRendererMixin",
-    "dirt_gui_background.ScreenMixin"
+    "mojang_logo.LoadingOverlayMixin",
+    "old_panorama_blur.PanoramaRendererMixin"
   ],
   "mixins": [
     "beta_leaves_lighting.BlockBehaviorMixin",
@@ -20,6 +20,7 @@
     "old_block_shapes.ChestBlockMixin",
     "old_block_shapes.EnderChestBlockMixin",
     "old_block_shapes.FenceBlockMixin",
+    "old_fence_connections.FenceBlockMixin",
     "old_footsteps.EntityMixin"
   ],
   "injectors": {
