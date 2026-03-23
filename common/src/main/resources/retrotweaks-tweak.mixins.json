@@ -13,7 +13,8 @@
     "mojang_logo.LoadingOverlayMixin",
     "old_panorama_blur.PanoramaRendererMixin",
     "old_button_colors.AbstractWidgetMixin",
-    "old_button_colors.AbstractButtonMixin"
+    "old_button_colors.AbstractButtonMixin",
+    "old_button_colors.AbstractSliderButtonMixin"
   ],
   "mixins": [
     "beta_leaves_lighting.BlockBehaviorMixin",
