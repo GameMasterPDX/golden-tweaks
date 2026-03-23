@@ -31,6 +31,7 @@ public class Tweaks {
     public static final Tweak<Enum<Versions>> MOJANG_LOGO = registerEnum(new EnumTweak<>("mojang_logo", Versions.BETA, Versions.MAIN_VERSIONS));
     public static final Tweak<Boolean> DIRT_GUI_BACKGROUND = register(new BooleanTweak("dirt_gui_background", true));
     public static final Tweak<Boolean> OLD_PANORAMA_BLUR = register(new BooleanTweak("old_panorama_blur", true));
+    public static final Tweak<Boolean> OLD_BUTTON_COLORS = register(new BooleanTweak("old_button_colors", true));
     // todo: eventually split tweaks into tweaks for clientside, and gamerules/similar for common
     public static final Tweak<Boolean> OLD_BLOCK_SHAPES = register(new BooleanTweak("old_block_shapes", true));
     public static final Tweak<Boolean> OLD_FENCE_CONNECTIONS = register(new BooleanTweak("old_fence_connections", true));

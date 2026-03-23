@@ -27,6 +27,8 @@
   "retrotweaks.tweak.old_panorama_blur.tooltip": "When enabled, the panorama will be rendered blurry",
   "retrotweaks.tweak.old_fence_connections": "Old Fence Connections",
   "retrotweaks.tweak.old_fence_connections.tooltip": "When enabled, Fences will only connect to Fences and not blocks",
+  "retrotweaks.tweak.old_button_colors": "Old Button Colors",
+  "retrotweaks.tweak.old_button_colors.tooltip": "When enabled, menu buttons will use the colors from older versions of the game",
   "retrotweaks.menu.mods": "Mods and Texture Packs",
   "retrotweaks.menu.version": "Minecraft Beta 1.7.3",
   "retrotweaks.enum.versions.alpha": "Alpha",
