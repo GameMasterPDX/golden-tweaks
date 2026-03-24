@@ -1,7 +1,5 @@
 package io.github.poeticrainbow.retrotweaks.tweak.types;
 
-import io.github.poeticrainbow.retrotweaks.tweak.Tweak;
-
 import java.util.function.Supplier;
 
 public class BooleanTweak extends Tweak<Boolean> {
