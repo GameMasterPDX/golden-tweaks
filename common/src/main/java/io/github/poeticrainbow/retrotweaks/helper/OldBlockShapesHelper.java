@@ -1,5 +1,7 @@
 package io.github.poeticrainbow.retrotweaks.helper;
 
+import dev.architectury.platform.Platform;
+import dev.architectury.utils.Env;
 import io.github.poeticrainbow.retrotweaks.tweak.Tweaks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -12,7 +14,7 @@ public class OldBlockShapesHelper {
 
     public static boolean shouldOverrideBlockShapes() {
         try {
-            if (Tweaks.OLD_HITBOX_SHAPES.get()) {
+            if (Tweaks.OLD_HITBOX_SHAPES.get() && Platform.getEnvironment().equals(Env.CLIENT)) {
                 net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
                 // only override on singleplayer, for now
                 return mc.getSingleplayerServer() != null;
