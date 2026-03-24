@@ -6,6 +6,7 @@
   "client": [
     "beta_main_menu.LogoRendererMixin",
     "beta_main_menu.TitleScreenMixin",
+    "beta_pause_menu.PauseScreenMixin",
     "big_stars.SkyRendererMixin",
     "dirt_gui_background.ScreenMixin",
     "flat_items.ItemEntityRendererMixin",
