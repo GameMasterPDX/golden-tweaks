@@ -1,7 +1,6 @@
 package io.github.poeticrainbow.retrotweaks.tweak.types;
 
 import io.github.poeticrainbow.retrotweaks.RetroTweaks;
-import io.github.poeticrainbow.retrotweaks.tweak.Tweak;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;

@@ -4,6 +4,7 @@ import io.github.poeticrainbow.retrotweaks.RetroTweaks;
 import io.github.poeticrainbow.retrotweaks.enums.Versions;
 import io.github.poeticrainbow.retrotweaks.tweak.types.BooleanTweak;
 import io.github.poeticrainbow.retrotweaks.tweak.types.EnumTweak;
+import io.github.poeticrainbow.retrotweaks.tweak.types.Tweak;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

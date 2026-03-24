@@ -11,6 +11,7 @@ public final class RetroTweaks {
     public static final String MOD_ID = "retrotweaks";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static TweakPlatform PLATFORM;
+
     public static void init() {
         // Write common init code here.
         Config.load();
@@ -19,6 +20,23 @@ public final class RetroTweaks {
         if (Platform.getEnvironment() == Env.CLIENT) {
             RetroTweaksClient.init();
         }
+    }
+
+    public static boolean isClient() {
+        return Platform.getEnvironment().equals(Env.CLIENT);
+    }
+
+    public static boolean isServer() {
+        return Platform.getEnvironment().equals(Env.SERVER);
+    }
+
+    public static boolean isLogicalSide() {
+        return switch (Platform.getEnvironment()) {
+            // clients are only in control of logic when in singleplayer
+            case CLIENT -> RetroTweaksClient.isLogicalSide();
+            // dedicated servers are always in control of the logic
+            case SERVER -> true;
+        };
     }
 
     public static Identifier id(String path) {

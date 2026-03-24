@@ -1,7 +1,7 @@
 package io.github.poeticrainbow.retrotweaks.config.screen;
 
-import io.github.poeticrainbow.retrotweaks.tweak.Tweak;
 import io.github.poeticrainbow.retrotweaks.tweak.Tweaks;
+import io.github.poeticrainbow.retrotweaks.tweak.types.Tweak;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import org.jetbrains.annotations.NotNull;

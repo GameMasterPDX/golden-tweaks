@@ -6,15 +6,16 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import dev.architectury.platform.Platform;
 import io.github.poeticrainbow.retrotweaks.RetroTweaks;
-import io.github.poeticrainbow.retrotweaks.tweak.Tweak;
 import io.github.poeticrainbow.retrotweaks.tweak.Tweaks;
+import io.github.poeticrainbow.retrotweaks.tweak.types.Tweak;
 
 import java.io.*;
 import java.nio.file.Path;
 
 public class Config {
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    public static final Path CONFIG_PATH = Platform.getConfigFolder().resolve("retrotweaks.json");
+    public static final Path COMMON_CONFIG = Platform.getConfigFolder().resolve("retrotweaks-common.json");
+    public static final Path CLIENT_CONFIG = Platform.getConfigFolder().resolve("retrotweaks-client.json");
 
     public static void save() {
         JsonObject obj = new JsonObject();
@@ -23,11 +24,11 @@ public class Config {
             obj.add(value.key(), GSON.toJsonTree(value.get()));
         }
 
-        try (Writer writer = new FileWriter(CONFIG_PATH.toFile())) {
+        try (Writer writer = new FileWriter(COMMON_CONFIG.toFile())) {
             GSON.toJson(obj, writer);
-            RetroTweaks.LOGGER.info("Successfully saved config to {}", CONFIG_PATH);
+            RetroTweaks.LOGGER.info("Successfully saved config to {}", COMMON_CONFIG);
         } catch (IOException e) {
-            RetroTweaks.LOGGER.error("Could not save config file to path {}", CONFIG_PATH);
+            RetroTweaks.LOGGER.error("Could not save config file to path {}", COMMON_CONFIG);
         }
     }
 
@@ -35,7 +36,7 @@ public class Config {
     public static void load() {
         try {
             // todo: change this to load a default config from the resources in the jar
-            try (Reader reader = new FileReader(CONFIG_PATH.toFile())) {
+            try (Reader reader = new FileReader(COMMON_CONFIG.toFile())) {
                 JsonObject obj = GSON.fromJson(reader, JsonObject.class);
 
                 for (String key : obj.keySet()) {
@@ -52,10 +53,10 @@ public class Config {
                     }
                 }
 
-                RetroTweaks.LOGGER.info("Successfully loaded config from {}", CONFIG_PATH);
+                RetroTweaks.LOGGER.info("Successfully loaded config from {}", COMMON_CONFIG);
             }
         } catch (IOException e) {
-            RetroTweaks.LOGGER.error("Could not read config file from path {}", CONFIG_PATH);
+            RetroTweaks.LOGGER.error("Could not read config file from path {}", COMMON_CONFIG);
         }
     }
 }

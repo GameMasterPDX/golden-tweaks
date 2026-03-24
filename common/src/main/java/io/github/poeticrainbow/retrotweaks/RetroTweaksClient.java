@@ -39,4 +39,18 @@ public class RetroTweaksClient {
     public static void openConfigScreen() {
         Minecraft.getInstance().execute(() -> Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen)));
     }
+
+    @SuppressWarnings("ConstantValue")
+    public static boolean isLogicalSide() {
+        // if client side, this is the controller of logic
+        var minecraft = Minecraft.getInstance();
+        if (minecraft == null) {
+            // minecraft is null during neoforge loading
+            return true;
+        }
+        var level = Minecraft.getInstance().level;
+        // if there is no level, we have full control
+        // if there is a level, we check if we have logical control over the level
+        return level == null || level.isClientSide();
+    }
 }
