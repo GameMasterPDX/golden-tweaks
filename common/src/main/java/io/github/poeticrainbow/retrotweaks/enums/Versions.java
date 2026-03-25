@@ -1,8 +1,11 @@
 package io.github.poeticrainbow.retrotweaks.enums;
 
+import net.minecraft.util.StringRepresentable;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
-public enum Versions {
+public enum Versions implements StringRepresentable {
     CLASSIC,
     INDEV,
     INFDEV,
@@ -17,5 +20,10 @@ public enum Versions {
     @Override
     public String toString() {
         return super.toString().toLowerCase();
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return this.toString();
     }
 }
