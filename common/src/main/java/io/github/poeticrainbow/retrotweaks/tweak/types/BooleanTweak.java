@@ -1,5 +1,7 @@
 package io.github.poeticrainbow.retrotweaks.tweak.types;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.PrimitiveCodec;
 import dev.architectury.utils.Env;
 
 import java.util.function.Supplier;
@@ -15,5 +17,10 @@ public class BooleanTweak extends Tweak<Boolean> {
 
     public void toggle() {
         this.set(!this.get());
+    }
+
+    @Override
+    public Codec<Boolean> getCodec() {
+        return PrimitiveCodec.BOOL;
     }
 }

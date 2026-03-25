@@ -1,5 +1,6 @@
 package io.github.poeticrainbow.retrotweaks.tweak.types;
 
+import com.mojang.serialization.Codec;
 import dev.architectury.utils.Env;
 import io.github.poeticrainbow.retrotweaks.RetroTweaks;
 import org.jetbrains.annotations.Nullable;
@@ -76,4 +77,6 @@ public abstract class Tweak<T> {
     public boolean isFunctional() {
         return isFunctional.get();
     }
+
+    public abstract Codec<T> getCodec();
 }

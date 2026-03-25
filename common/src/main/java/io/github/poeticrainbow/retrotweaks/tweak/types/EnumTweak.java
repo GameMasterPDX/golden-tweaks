@@ -1,29 +1,33 @@
 package io.github.poeticrainbow.retrotweaks.tweak.types;
 
+import com.mojang.serialization.Codec;
 import dev.architectury.utils.Env;
 import io.github.poeticrainbow.retrotweaks.RetroTweaks;
+import net.minecraft.util.StringRepresentable;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-public class EnumTweak<T extends Enum<T>> extends Tweak<Enum<T>> {
+public class EnumTweak<T extends Enum<T> & StringRepresentable> extends Tweak<T> {
+    public final Codec<T> CODEC = StringRepresentable.fromEnum(() -> defaultValue().getDeclaringClass().getEnumConstants());
+
     private final List<T> values;
 
-    public EnumTweak(String key, Env logicalSide, Enum<T> defaultValue, Enum<T> disabledValue) {
+    public EnumTweak(String key, Env logicalSide, T defaultValue, T disabledValue) {
         this(key, logicalSide, defaultValue, disabledValue, defaultValue.getDeclaringClass().getEnumConstants());
     }
 
-    public EnumTweak(String key, Env logicalSide, Enum<T> defaultValue, Enum<T> disabledValue, T[] allowedValues) {
+    public EnumTweak(String key, Env logicalSide, T defaultValue, T disabledValue, T[] allowedValues) {
         this(key, logicalSide, defaultValue, disabledValue, List.of(allowedValues));
     }
 
-    public EnumTweak(String key, Env logicalSide, Enum<T> defaultValue, Enum<T> disabledValue, List<T> allowedValues) {
+    public EnumTweak(String key, Env logicalSide, T defaultValue, T disabledValue, List<T> allowedValues) {
         super(key, logicalSide, defaultValue, disabledValue);
         this.values = allowedValues;
     }
 
     @Override
-    public void set(Enum<T> value) {
+    public void set(T value) {
         if (values.contains(value)) {
             super.set(value);
         } else {
@@ -33,6 +37,11 @@ public class EnumTweak<T extends Enum<T>> extends Tweak<Enum<T>> {
                 StringUtils.join(values, ", ")
             );
         }
+    }
+
+    @Override
+    public Codec<T> getCodec() {
+        return CODEC;
     }
 
     public void next() {
