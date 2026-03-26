@@ -1,6 +1,9 @@
 package io.github.poeticrainbow.retrotweaks.tweak.types;
 
+import com.google.gson.JsonElement;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
 import dev.architectury.utils.Env;
 import io.github.poeticrainbow.retrotweaks.RetroTweaks;
 import org.jetbrains.annotations.Nullable;
@@ -78,5 +81,21 @@ public abstract class Tweak<T> {
         return isFunctional.get();
     }
 
+    public Env logicalSide() {
+        return logicalSide;
+    }
+
     public abstract Codec<T> getCodec();
+
+    public DataResult<JsonElement> encode() {
+        // do not use get() as we do not want to override with the current server's value
+        return this.getCodec().encodeStart(JsonOps.INSTANCE, currentValue);
+    }
+
+    public void decode(JsonElement element) {
+        var value = this.getCodec().decode(JsonOps.INSTANCE, element);
+        value.ifSuccess(pair -> {
+            this.currentValue = pair.getFirst();
+        });
+    }
 }

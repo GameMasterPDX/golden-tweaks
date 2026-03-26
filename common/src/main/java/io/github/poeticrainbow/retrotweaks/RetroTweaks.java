@@ -14,9 +14,7 @@ public final class RetroTweaks {
 
     public static void init() {
         // Write common init code here.
-        Config.load();
-        Config.save();
-
+        Config.init();
         if (Platform.getEnvironment() == Env.CLIENT) {
             RetroTweaksClient.init();
         }
