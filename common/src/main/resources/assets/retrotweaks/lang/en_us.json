@@ -41,6 +41,8 @@
   "retrotweaks.tweak.loading_screen.tooltip": "When enabled, the loading screen will appear as the one from the version selected.",
   "retrotweaks.tweak.old_button_colors": "Old Button Colors",
   "retrotweaks.tweak.old_button_colors.tooltip": "When enabled, menu buttons will use the colors from older versions of the game",
+  "retrotweaks.tweak.old_death_screen": "Old Death Screen",
+  "retrotweaks.tweak.old_death_screen.tooltip": "When enabled, the death screen will display no reason of death, and classic Score: &e0 bug will be restored",
   "retrotweaks.tweak.old_fence_connections": "Old Fence Connections",
   "retrotweaks.tweak.old_fence_connections.tooltip": "When enabled, Fences will only connect to Fences and not blocks",
   "retrotweaks.tweak.old_footsteps": "Old Footsteps",
