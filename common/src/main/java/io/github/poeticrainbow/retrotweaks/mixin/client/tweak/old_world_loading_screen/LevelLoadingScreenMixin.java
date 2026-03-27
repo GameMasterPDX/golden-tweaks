@@ -22,10 +22,8 @@ public class LevelLoadingScreenMixin extends Screen {
     @Shadow private float smoothedProgress;
     @Shadow private LevelLoadingScreen.Reason reason;
 
-    @Unique private int currentDimension = 0;
-    @Unique private int lastDimension = 0;
 
-
+    @Unique
     void retrotweaks$draw_progress_bar(GuiGraphics guiGraphics, int xStart, int yStart, int length, int height, float progress) {
         guiGraphics.fill(xStart, yStart, xStart + length, yStart + height, 0xFF808080);
         guiGraphics.fill(xStart, yStart, xStart + Math.round(progress * length), yStart + height, 0xFF80FF80);
@@ -41,6 +39,11 @@ public class LevelLoadingScreenMixin extends Screen {
             int barHeight = 2;
             int xStart = width - barLength / 2;
             int yStart = height + 16;
+
+            // todo: use the previousDimension or previousDimensionTranslation in
+            //       DimensionHelper to display a Entering or Leaving text
+            //guiGraphics.drawCenteredString(this.font, DimensionHelper.previousDimensionTranslation(), width, l - 4, -1);
+
             Component header = Component.translatable("retrotweaks.loading.loading");
             Component stage = Component.translatable("retrotweaks.loading.building");
             guiGraphics.drawCenteredString(this.font, stage, width, l - 4 + 8, -1);
