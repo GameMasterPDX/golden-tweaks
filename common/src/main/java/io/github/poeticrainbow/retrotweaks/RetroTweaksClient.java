@@ -13,6 +13,7 @@ import io.github.poeticrainbow.retrotweaks.tweak.Tweaks;
 import io.github.poeticrainbow.retrotweaks.tweak.types.Tweak;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
 import org.lwjgl.glfw.GLFW;
 
 public class RetroTweaksClient {
@@ -61,5 +62,12 @@ public class RetroTweaksClient {
         // if there is no level, we have full control
         // if there is a level, we check if we have logical control over the server (singleplayer)
         return level == null || minecraft.hasSingleplayerServer();
+    }
+
+    public static MinecraftServer getSingleplayerServer() {
+        if (Minecraft.getInstance().hasSingleplayerServer()) {
+            return Minecraft.getInstance().getSingleplayerServer();
+        }
+        return null;
     }
 }
