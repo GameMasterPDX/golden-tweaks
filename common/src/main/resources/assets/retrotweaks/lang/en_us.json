@@ -33,6 +33,8 @@
   "retrotweaks.tweak.beta_pause_menu.tooltip": "When enabled, the pause menu will be modified to look like the one that appears in beta versions.",
   "retrotweaks.tweak.old_world_loading_screen": "Old World Loading Screen",
   "retrotweaks.tweak.old_world_loading_screen.tooltip": "When enabled, the world loading screen will be modified to appear as the one featured in earlier versions of the game.",
+  "retrotweaks.tweak.old_hud": "Old Hud",
+  "retrotweaks.tweak.old_hud.tooltip": "When enabled, the game hud will be modified to remove the hunger bar, and move other bars to their original locations.",
   "retrotweaks.menu.mods": "Mods and Texture Packs",
   "retrotweaks.menu.version": "Minecraft Beta 1.7.3",
   "retrotweaks.menu.loading": "Loading...",

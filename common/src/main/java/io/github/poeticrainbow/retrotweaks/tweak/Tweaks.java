@@ -34,6 +34,8 @@ public class Tweaks {
     public static final Tweak<Boolean> OLD_PANORAMA_BLUR = register(new BooleanTweak("old_panorama_blur", true));
     public static final Tweak<Boolean> OLD_BUTTON_COLORS = register(new BooleanTweak("old_button_colors", true));
     public static final Tweak<Boolean> OLD_WORLD_LOADING_SCREEN = register(new BooleanTweak("old_world_loading_screen", true));
+    public static final Tweak<Boolean> OLD_HUD = register(new BooleanTweak("old_hud", true));
+    public static final Tweak<Boolean> REMOVE_XP_BAR = register(new BooleanTweak("remove_xp_bar", true));
     // todo: eventually split tweaks into tweaks for clientside, and gamerules/similar for common
     public static final Tweak<Boolean> OLD_HITBOX_SHAPES = register(new BooleanTweak("old_hitbox_shapes", true));
     public static final Tweak<Boolean> OLD_FENCE_CONNECTIONS = register(new BooleanTweak("old_fence_connections", true));

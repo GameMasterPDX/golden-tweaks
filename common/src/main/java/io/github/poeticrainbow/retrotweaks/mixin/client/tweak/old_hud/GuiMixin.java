@@ -1,0 +1,108 @@
+package io.github.poeticrainbow.retrotweaks.mixin.client.tweak.old_hud;
+
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import io.github.poeticrainbow.retrotweaks.tweak.Tweaks;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.Redirect;
+
+@Mixin(Gui.class)
+public abstract class GuiMixin {
+    @Unique private static final Identifier ARMOR_EMPTY_SPRITE = Identifier.withDefaultNamespace("hud/armor_empty");
+    @Unique private static final Identifier ARMOR_HALF_SPRITE = Identifier.withDefaultNamespace("hud/armor_half");
+    @Unique private static final Identifier ARMOR_FULL_SPRITE = Identifier.withDefaultNamespace("hud/armor_full");
+    @Unique private static final Identifier AIR_SPRITE = Identifier.withDefaultNamespace("hud/air");
+    @Unique private static final Identifier AIR_POPPING_SPRITE = Identifier.withDefaultNamespace("hud/air_bursting");
+
+    @Unique private static boolean xpbarexists = Tweaks.REMOVE_XP_BAR.get();
+
+    @WrapMethod(method = "renderArmor")
+    private static void retrotweaks$render_armor(GuiGraphics guiGraphics, Player player, int i, int j, int k, int l, Operation<Void> original) {
+        if (Tweaks.OLD_HUD.get()) {
+            int m = player.getArmorValue();
+            int var6 = guiGraphics.guiWidth();
+            int var7 = guiGraphics.guiHeight();
+            int var17 = var7 - 32;
+            if (!xpbarexists) {
+                var17 = var17 - 7;
+            }
+            if (m > 0) {
+                for(int o = 0; o < 10; ++o) {
+                    int var18 = var6 / 2 + 91 - o * 8 - 9;
+                    if (o * 2 + 1 < m) {
+
+                        guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, ARMOR_FULL_SPRITE, var18, var17, 9, 9);
+                    }
+
+                    if (o * 2 + 1 == m) {
+                        guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, ARMOR_HALF_SPRITE, var18, var17, 9, 9);
+                    }
+
+                    if (o * 2 + 1 > m) {
+                        guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, ARMOR_EMPTY_SPRITE, var18, var17, 9, 9);
+                    }
+                }
+            }
+        } else {
+            original.call(guiGraphics, player, i, j, k, l);
+        }
+    }
+
+    @WrapMethod(method = "renderFood")
+    private void retrotweaks$render_food(GuiGraphics guiGraphics, Player player, int i, int j, Operation<Void> original) {
+        if (Tweaks.OLD_HUD.get()) {
+            // do nothing
+        } else {
+            original.call(guiGraphics, player, i, j);
+        }
+    }
+
+    @WrapMethod(method = "renderAirBubbles")
+    private void retrotweaks$render_air_bubble(GuiGraphics guiGraphics, Player player, int i, int j, int k, Operation<Void> original) {
+        if (Tweaks.OLD_HUD.get()) {
+            int l = player.getMaxAirSupply();
+            int m = Math.clamp((long) player.getAirSupply(), 0, l);
+            boolean bl = player.isEyeInFluid(FluidTags.WATER);
+            int var6 = guiGraphics.guiWidth();
+            int var7 = guiGraphics.guiHeight();
+
+            if (bl || m < l) {
+                int n = (int) Math.ceil((double) (m - 2) * 10.0D / (double) l);
+                int totalBubbles = (int) Math.ceil((double) m * 10.0D / (double) l);
+                int o = totalBubbles - n;
+                float maxHealth = (float) player.getAttributeValue(Attributes.MAX_HEALTH);
+                float absorption = player.getAbsorptionAmount();
+                int healthRows = Mth.ceil((maxHealth + absorption) / 2.0F / 10.0F);
+
+                int yOffset = var7 - 32 - 9;
+                yOffset -= (healthRows - 1) * 10;
+
+                if (!xpbarexists) {
+                    yOffset = yOffset - 7;
+                }
+
+                for (int q = 0; q < (n + o); ++q) {
+                    if (q < n) {
+                        guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, AIR_SPRITE, var6 / 2 - 91 + q * 8, yOffset, 9, 9);
+                    } else {
+                        guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, AIR_POPPING_SPRITE, var6 / 2 - 91 + q * 8, yOffset, 9, 9);
+                    }
+                }
+            }
+        } else {
+            original.call(guiGraphics, player, i, j, k);
+        }
+    }
+}
