@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(Gui.class)
 public abstract class GuiMixin {
     @Final @Shadow private static Identifier ARMOR_EMPTY_SPRITE;
-    @Unique private static final Identifier ARMOR_HALF_SPRITE = Identifier.fromNamespaceAndPath(RetroTweaks.MOD_ID, "gui/armor_half_flipped");
+    @Unique private static final Identifier ARMOR_HALF_SPRITE = Identifier.fromNamespaceAndPath(RetroTweaks.MOD_ID, "hud/armor_half_flipped");
     @Final @Shadow private static Identifier ARMOR_FULL_SPRITE;
     @Final @Shadow private static Identifier AIR_SPRITE;
     @Final @Shadow private static Identifier AIR_POPPING_SPRITE;
