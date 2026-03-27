@@ -17,11 +17,7 @@ public class ConfigScreen extends Screen {
 
     public static final int sidebarWidth = 240;
 
-    private Screen parent;
-
-    public ConfigScreen() {
-        super(Component.translatable("gui.retrotweaks.config"));
-    }
+    private final Screen parent;
 
     public ConfigScreen(Screen parent) {
         super(Component.translatable("gui.retrotweaks.config"));
@@ -31,21 +27,14 @@ public class ConfigScreen extends Screen {
     @Override
     protected void init() {
         var padding = 20;
-        //private HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 40, 40);
         TweakButtonList list = new TweakButtonList(minecraft, sidebarWidth, height - padding);
         errors = ErrorCollector.checkForErrors();
-
-        //layout.addTitleHeader(getTitle(), getFont());
-        //layout.addToContents(list);
-        //layout.addToFooter(new Button.Builder(CommonComponents.GUI_DONE, button -> {
-        //    Minecraft.getInstance().execute(() -> Minecraft.getInstance().setScreen(null));
-        //}).build());
-        //layout.arrangeElements();
 
         addRenderableWidget(list);
         addRenderableWidget(
             new Button.Builder(CommonComponents.GUI_DONE, button -> this.onClose())
-                .bounds((sidebarWidth - 220) / 2, height - padding, 220, padding).build()
+                .bounds((sidebarWidth - 220) / 2, height - padding, 220, padding)
+                .build()
         );
     }
 
@@ -64,6 +53,7 @@ public class ConfigScreen extends Screen {
         if (minecraft.level == null) {
             super.renderBackground(guiGraphics, i, j, f);
         } else {
+            // no background when in game to show the changes easier
             this.minecraft.gui.renderDeferredSubtitles();
         }
     }
@@ -78,12 +68,6 @@ public class ConfigScreen extends Screen {
 
     @Override
     public void render(@NotNull GuiGraphics graphics, int i, int j, float f) {
-        //graphics.drawCenteredString(getFont(), getTitle(), width / 2, 0, -1);
-        //renderMenuBackground(graphics);
-
-
-        //layout.visitChildren(layoutElement -> layoutElement.visitWidgets(abstractWidget -> abstractWidget.render(graphics, i, j, f)));
-
         super.render(graphics, i, j, f);
         renderErrors(graphics, i, j, f);
     }
