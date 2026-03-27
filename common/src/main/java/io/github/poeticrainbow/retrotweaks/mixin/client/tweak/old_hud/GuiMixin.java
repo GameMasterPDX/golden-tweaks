@@ -59,18 +59,17 @@ public abstract class GuiMixin {
 
     @WrapMethod(method = "renderFood")
     private void retrotweaks$render_food(GuiGraphics guiGraphics, Player player, int i, int j, Operation<Void> original) {
-        if (Tweaks.HIDE_HUNGER_BAR.get()) {
-            // do nothing
-        } else {
+        if (!Tweaks.HIDE_HUNGER_BAR.get()) {
             original.call(guiGraphics, player, i, j);
         }
+        // do nothing
     }
 
     @WrapMethod(method = "renderAirBubbles")
     private void retrotweaks$render_air_bubble(GuiGraphics guiGraphics, Player player, int i, int j, int k, Operation<Void> original) {
         if (Tweaks.HIDE_HUNGER_BAR.get()) {
             int l = player.getMaxAirSupply();
-            int m = Math.clamp((long) player.getAirSupply(), 0, l);
+            int m = Math.clamp(player.getAirSupply(), 0, l);
             boolean bl = player.isEyeInFluid(FluidTags.WATER);
             int var6 = guiGraphics.guiWidth();
             int var7 = guiGraphics.guiHeight();

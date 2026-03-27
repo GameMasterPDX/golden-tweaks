@@ -21,7 +21,6 @@ public class LevelLoadingScreenMixin extends Screen {
 
     @Shadow private LevelLoadTracker loadTracker;
     @Shadow private float smoothedProgress;
-    @Shadow private LevelLoadingScreen.Reason reason;
 
 
     @Unique
