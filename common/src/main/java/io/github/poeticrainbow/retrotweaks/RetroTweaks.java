@@ -9,7 +9,6 @@ import dev.architectury.utils.GameInstance;
 import io.github.poeticrainbow.retrotweaks.command.RetroTweaksServerCommand;
 import io.github.poeticrainbow.retrotweaks.config.Config;
 import io.github.poeticrainbow.retrotweaks.network.ConfigSyncS2C;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import org.jetbrains.annotations.Nullable;
@@ -52,9 +51,8 @@ public final class RetroTweaks {
     public static MinecraftServer getServer() {
         if (isServer()) {
             return GameInstance.getServer();
-        }
-        if (isClient() && Minecraft.getInstance().hasSingleplayerServer()) {
-            return Minecraft.getInstance().getSingleplayerServer();
+        } else if (isClient()) {
+            return RetroTweaksClient.getSingleplayerServer();
         }
         return null;
     }
