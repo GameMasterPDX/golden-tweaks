@@ -7,6 +7,8 @@ import io.github.poeticrainbow.retrotweaks.config.Config;
 import joptsimple.internal.Strings;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.permissions.Permission;
+import net.minecraft.server.permissions.PermissionLevel;
 
 import static net.minecraft.commands.Commands.literal;
 
@@ -14,6 +16,7 @@ public class RetroTweaksServerCommand {
 
     public static LiteralArgumentBuilder<CommandSourceStack> build() {
         return literal(RetroTweaks.MOD_ID + "server")
+            .requires(source -> source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.ADMINS)))
             .then(literal("reload")
                       .executes(context -> {
                           Config.init();
