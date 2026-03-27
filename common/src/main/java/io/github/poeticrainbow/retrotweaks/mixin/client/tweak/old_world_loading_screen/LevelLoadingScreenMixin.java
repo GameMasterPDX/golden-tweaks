@@ -40,10 +40,6 @@ public class LevelLoadingScreenMixin extends Screen {
             int xStart = width - barLength / 2;
             int yStart = height + 16;
 
-            // todo: use the previousDimension or previousDimensionTranslation in
-            //       DimensionHelper to display a Entering or Leaving text
-            //guiGraphics.drawCenteredString(this.font, DimensionTracker.previousDimensionTranslation(), width, l - 4, -1);
-
             Component header = Component.translatable("retrotweaks.loading.loading");
             Component stage = Component.translatable("retrotweaks.loading.building");
 
