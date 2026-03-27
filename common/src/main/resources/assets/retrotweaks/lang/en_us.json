@@ -1,5 +1,6 @@
 {
   "gui.retrotweaks.config": "RetroTweaks Config",
+  "retrotweaks.death.score": "Score: &e0",
   "retrotweaks.enum.versions.alpha": "Alpha",
   "retrotweaks.enum.versions.beta": "Beta",
   "retrotweaks.enum.versions.infdev": "Infdev",
