@@ -31,6 +31,7 @@ public class Tweaks {
     public static final Tweak<Boolean> HIDE_HUNGER_BAR = register(new BooleanTweak("hide_hunger_bar", Env.CLIENT, true));
     public static final Tweak<Boolean> HIDE_XP_BAR = register(new BooleanTweak("hide_xp_bar", Env.CLIENT, true));
     public static final Tweak<Boolean> OLD_DEATH_SCREEN = register(new BooleanTweak("old_death_screen", Env.CLIENT, true));
+    public static final Tweak<Boolean> OLD_CROSSHAIR = register(new BooleanTweak("old_crosshair", Env.CLIENT, true));
 
     // todo: eventually split tweaks into tweaks for clientside, and gamerules/similar for common
     // SERVER SIDE
