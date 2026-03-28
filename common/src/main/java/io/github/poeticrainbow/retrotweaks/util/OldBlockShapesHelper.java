@@ -17,9 +17,11 @@ import java.util.Optional;
 public class OldBlockShapesHelper {
     public static final VoxelShape FENCE_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 24.0D, 16.0D);
 
-    public static final TagKey<Block> FULL = TagKey.create(Registries.BLOCK, RetroTweaks.id("shapes/full"));
-    public static final TagKey<Block> FENCE_GATE = TagKey.create(Registries.BLOCK, RetroTweaks.id("shapes/fence_gate"));
-    public static final TagKey<Block> FENCE = TagKey.create(Registries.BLOCK, RetroTweaks.id("shapes/fence"));
+    public static final TagKey<Block> FULL_COLLISION = TagKey.create(Registries.BLOCK, RetroTweaks.id("shapes/collision/full"));
+    public static final TagKey<Block> FENCE_GATE_COLLISION = TagKey.create(Registries.BLOCK, RetroTweaks.id("shapes/collision/fence_gate"));
+    public static final TagKey<Block> FENCE_COLLISION = TagKey.create(Registries.BLOCK, RetroTweaks.id("shapes/collision/fence"));
+
+    public static final TagKey<Block> FULL_HITBOX = TagKey.create(Registries.BLOCK, RetroTweaks.id("shapes/hitbox/full"));
 
     public static boolean shouldOverrideBlockShapes() {
         return Tweaks.OLD_HITBOX_SHAPES.get();
@@ -40,13 +42,13 @@ public class OldBlockShapesHelper {
     }
 
     public static Optional<VoxelShape> getCollisionShapeForState(BlockBehaviour.BlockStateBase state) {
-        if (is(state, FULL)) {
+        if (is(state, FULL_COLLISION)) {
             return getFullBlockShape();
         }
-        if (is(state, FENCE)) {
+        if (is(state, FENCE_COLLISION)) {
             return getFenceShape();
         }
-        if (is(state, FENCE_GATE)) {
+        if (is(state, FENCE_GATE_COLLISION)) {
             if (state.hasProperty(BlockStateProperties.OPEN) && state.getValue(BlockStateProperties.OPEN)) {
                 return getEmptyShape();
             }
@@ -56,7 +58,7 @@ public class OldBlockShapesHelper {
     }
 
     public static Optional<VoxelShape> getOutlineShapeForState(BlockBehaviour.BlockStateBase state) {
-        if (is(state, FULL) || is(state, FENCE) || is(state, FENCE_GATE)) {
+        if (is(state, FULL_HITBOX)) {
             return getFullBlockShape();
         }
         return Optional.empty();
