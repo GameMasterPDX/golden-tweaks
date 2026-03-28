@@ -18,14 +18,15 @@
     "old_button_colors.AbstractButtonMixin",
     "old_button_colors.AbstractSliderButtonMixin",
     "old_button_colors.AbstractWidgetMixin",
+    "old_crosshair.GuiMixin",
     "old_death_screen.DeathScreenMixin",
     "old_footsteps.EntityMixin",
+    "old_hitbox_shapes.LevelRendererMixin",
     "old_hud.GuiMixin",
     "old_panorama_blur.PanoramaRendererMixin",
     "old_world_loading_screen.LevelLoadingScreenMixin",
     "remove_experience_bar.ContextualBarRendererMixin",
-    "remove_experience_bar.ExperienceBarRendererMixin",
-    "old_crosshair.GuiMixin"
+    "remove_experience_bar.ExperienceBarRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
