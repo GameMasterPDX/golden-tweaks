@@ -12,6 +12,9 @@ import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LevelLoadingScreen.class)
 public class LevelLoadingScreenMixin extends Screen {
@@ -22,6 +25,14 @@ public class LevelLoadingScreenMixin extends Screen {
     @Shadow private LevelLoadTracker loadTracker;
     @Shadow private float smoothedProgress;
 
+    @Unique private Component retrotweaks$previousDimension;
+    @Unique private Component retrotweaks$currentDimension;
+
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void retrotweaks$set_previous_and_current_dimensions(LevelLoadTracker levelLoadTracker, LevelLoadingScreen.Reason reason, CallbackInfo ci) {
+        retrotweaks$previousDimension = DimensionTracker.previousDimensionTranslation();
+        retrotweaks$currentDimension = DimensionTracker.currentDimensionTranslation();
+    }
 
     @Unique
     void retrotweaks$draw_progress_bar(GuiGraphics guiGraphics, int xStart, int yStart, int length, int height, float progress) {
@@ -43,11 +54,14 @@ public class LevelLoadingScreenMixin extends Screen {
             Component header = Component.translatable("retrotweaks.loading.loading");
             Component stage = Component.translatable("retrotweaks.loading.building");
 
-            if (DimensionTracker.previousDimensionTranslation().equals(Component.translatable("dimension.minecraft.overworld")) && this.minecraft.level != null) {
-                stage = Component.translatable("retrotweaks.loading.enter", DimensionTracker.currentDimensionTranslation());
-            }
-            if (DimensionTracker.currentDimensionTranslation().equals(Component.translatable("dimension.minecraft.overworld")) && this.minecraft.level != null) {
-                stage = Component.translatable("retrotweaks.loading.leave", DimensionTracker.previousDimensionTranslation());
+            // do not show text when going between identical dimensions
+            if (this.minecraft.level != null && !retrotweaks$previousDimension.equals(retrotweaks$currentDimension)) {
+                if (retrotweaks$previousDimension.equals(Component.translatable("dimension.minecraft.overworld"))) {
+                    stage = Component.translatable("retrotweaks.loading.enter", retrotweaks$currentDimension);
+                }
+                if (retrotweaks$currentDimension.equals(Component.translatable("dimension.minecraft.overworld"))) {
+                    stage = Component.translatable("retrotweaks.loading.leave", retrotweaks$previousDimension);
+                }
             }
 
             guiGraphics.drawCenteredString(this.font, stage, width, l - 4 + 8, -1);
