@@ -2,6 +2,7 @@ package io.github.poeticrainbow.retrotweaks.tweak;
 
 import dev.architectury.utils.Env;
 import io.github.poeticrainbow.retrotweaks.RetroTweaks;
+import io.github.poeticrainbow.retrotweaks.enums.Chat;
 import io.github.poeticrainbow.retrotweaks.enums.Versions;
 import io.github.poeticrainbow.retrotweaks.tweak.types.BooleanTweak;
 import io.github.poeticrainbow.retrotweaks.tweak.types.EnumTweak;
@@ -33,7 +34,7 @@ public class Tweaks {
     public static final Tweak<Boolean> OLD_DEATH_SCREEN = register(new BooleanTweak("old_death_screen", Env.CLIENT, true));
     public static final Tweak<Boolean> OLD_CROSSHAIR = register(new BooleanTweak("old_crosshair", Env.CLIENT, true));
     public static final Tweak<Boolean> MOVE_SYSTEM_MESSAGES = register(new BooleanTweak("move_system_messages", Env.CLIENT, true));
-    public static final Tweak<Boolean> BETA_CHAT = register(new BooleanTweak("beta_chat", Env.CLIENT, true));
+    public static final Tweak<Chat> CHAT_SCREEN_STYLE = register(new EnumTweak<>("chat_screen_style", Env.CLIENT, Chat.BETA, Chat.MODERN, Chat.VALUES));
     public static final Tweak<Boolean> TOP_LEFT_VERSION_TEXT = register(new BooleanTweak("top_left_version_text", Env.CLIENT, false));
 
     // todo: eventually split tweaks into tweaks for clientside, and gamerules/similar for common

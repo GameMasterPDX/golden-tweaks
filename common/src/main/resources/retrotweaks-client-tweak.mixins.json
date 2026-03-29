@@ -4,9 +4,9 @@
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
-    "beta_chat.ChatComponentMixin",
-    "beta_chat.ChatScreenMixin",
-    "beta_chat.GuiMessageTagMixin",
+    "chat_screen_style.ChatComponentMixin",
+    "chat_screen_style.ChatScreenMixin",
+    "chat_screen_style.GuiMessageTagMixin",
     "beta_leaves_lighting.BlockBehaviorMixin",
     "beta_main_menu.LogoRendererMixin",
     "beta_main_menu.TitleScreenMixin",
@@ -37,6 +37,6 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "beta_chat.ChatComponent$1Mixin"
+    "chat_screen_style.ChatComponent$1Mixin"
   ]
 }
