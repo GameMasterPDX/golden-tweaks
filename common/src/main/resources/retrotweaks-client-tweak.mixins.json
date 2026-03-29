@@ -4,21 +4,26 @@
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
-    "chat_screen_style.ChatComponentMixin",
-    "chat_screen_style.ChatScreenMixin",
-    "chat_screen_style.GuiMessageTagMixin",
     "beta_leaves_lighting.BlockBehaviorMixin",
     "beta_main_menu.LogoRendererMixin",
     "beta_main_menu.TitleScreenMixin",
     "beta_pause_menu.PauseScreenMixin",
     "big_stars.SkyRendererMixin",
+    "chat_screen_style.ChatComponentMixin",
+    "chat_screen_style.ChatScreenMixin",
+    "chat_screen_style.GuiMessageTagMixin",
     "dark_ambient_occlusion.BlockBehaviorMixin",
     "dirt_gui_background.LevelLoadingScreenMixin",
     "dirt_gui_background.ScreenMixin",
     "flat_items.ItemEntityRendererMixin",
     "full_face_shading.AmbientOcclusionRenderStorageMixin",
+    "hide_action_bar.GuiMixin",
+    "hide_hunger_bar.GuiMixin",
+    "hide_xp_bar.ContextualBarRendererMixin",
+    "hide_xp_bar.ExperienceBarRendererMixin",
     "loading_screen.LoadingOverlayMixin",
     "move_system_messages.ChatListenerMixin",
+    "old_bossbar.BossHealthOverlayMixin",
     "old_button_colors.AbstractButtonMixin",
     "old_button_colors.AbstractSliderButtonMixin",
     "old_button_colors.AbstractWidgetMixin",
@@ -26,17 +31,17 @@
     "old_death_screen.DeathScreenMixin",
     "old_footsteps.EntityMixin",
     "old_hitbox_shapes.LevelRendererMixin",
-    "hide_hunger_bar.GuiMixin",
     "old_panorama_blur.PanoramaRendererMixin",
+    "hide_extra_tooltip_info.CreativeModeInventoryScreenMixin",
+    "hide_extra_tooltip_info.ItemStackMixin",
     "old_world_loading_screen.LevelLoadingScreenMixin",
-    "hide_xp_bar.ContextualBarRendererMixin",
-    "hide_xp_bar.ExperienceBarRendererMixin",
     "top_left_version_text.GuiMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "chat_screen_style.ChatComponent$1Mixin"
+    "chat_screen_style.ChatComponent$1Mixin",
+    "old_bossbar.BossEventMixin"
   ]
 }
