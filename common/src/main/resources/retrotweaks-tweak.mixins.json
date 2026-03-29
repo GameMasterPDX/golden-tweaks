@@ -6,6 +6,7 @@
   "mixins": [
     "dark_water_lighting.BlockStateBaseMixin",
     "instant_consumption.ConsumableMixin",
+    "instant_consumption.FoodPropertiesMixin",
     "old_fence_connections.FenceBlockMixin",
     "old_hitbox_shapes.BlockStateBaseMixin",
     "old_hitbox_shapes.ClipContextMixin",
